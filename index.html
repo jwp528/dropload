@@ -29,7 +29,10 @@
           'secondaryOptions': secondary,
           'firstOption'  : 'Select an Option',
           'name'         :  'example',
-          'labelValue'   : "Secondary Select:"
+          'labelValue'   : "Secondary Select:",
+          'secondaryChange' : function(){
+            alert($(this).val());
+          }
         });
       });
     </script>
