@@ -20,28 +20,40 @@
       ];
 
       $(document).ready(function(){
-        $("#dropload").dropload({
-
-        });
+        $("#dropload").dropload({});
 
         $("#ex2").dropload({
-          'initialOptions': initial,
+          'initialOptions'  : initial,
           'secondaryOptions': secondary,
-          'firstOption'  : 'Select an Option',
-          'name'         :  'example',
-          'labelValue'   : "Secondary Select:",
-          'secondaryChange' : function(){
-            alert($(this).val());
-          }
+          'firstOption'     : 'Select a 2nd Option',
+          'name'            : 'example',
+          'labelValue'      : "Secondary Select:"
         });
+
+        $("#ex3").dropload({
+          'name'  : 'ex3',
+          'secondaryChange' : function(){
+            alert("you've chosen the province/state: "+$(this).val());
+          }
+        })
       });
+    </script>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-61317982-1', 'auto');
+        ga('send', 'pageview');
+
     </script>
   </head>
   <body>
     <ul class="menu">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#linktogithubrepo">Fork It</a></li>
+      <li><a href="http://jwp528.github.io">Home</a></li>
+      <li><a href="www.github.com/jwp528/dropload">Fork It</a></li>
     </ul>
     <div class="head">
 
@@ -56,7 +68,7 @@
 &lt;script type="text/javascript" src="js/jquery.dropload.js"&gt; &lt;/script&gt;
 &lt;script type="text/javascript"&gt;
   $(document).ready(function(){
-    $("#dropload").dropload({});
+    $("#MySelectId").dropload({});
   });
 &lt;/script&gt;
         </pre>
@@ -98,12 +110,45 @@
     [["OP3: secondary 1", "sValue 1"]],//choices for option 3
     [["OP4: secondary 1", "sValue 1"],["OP4: secondary 2", "sValue 2"]],//choices for option 4
   ];
+
+  $(document).ready(function(){
+    $$("#mySelectId").dropload({
+          'initialOptions'  : initial,
+          'secondaryOptions': secondary,
+          'firstOption'     : 'Select a 2nd Option',
+          'name'            : 'example',
+          'labelValue'      : 'Secondary Select:'
+        });
+  });
 &lt;/script&gt;
         </pre>
         <h2>Result:</h2>
         <form action="index.html" method="post">
           <label for="country" class="label">initial Options:</label>
           <select name="country" class="dropdown" id="ex2">
+            <option>Select Option...</option>
+          </select>
+        </form>
+      </div>
+      <h2 class="title">Extend it even further to handle changes from the generated '&lt;select&gt;' tag!</h2>
+      <div class="preview">
+        <p>You can define your own function to handle changes to the generated dropdown. going off the original example.</p>
+        <p>Did you know the values generated from the preset countries are the country/state/province abbreviations? Check it out!</p>
+        <pre>
+&lt;script type="text/javascript"&gt;
+  $(document).ready(function(){
+    $("#MySelectId").dropload({
+      'secondaryChange' : function(){
+        alert($(this).val());
+      }
+    });
+  });
+&lt;/script&gt;
+        </pre>
+        <h2>Result:</h2>
+        <form action="index.html" method="post">
+          <label for="country" class="label">Select Country:</label>
+          <select name="country" class="dropdown" id="ex3">
             <option>Select Option...</option>
           </select>
         </form>
