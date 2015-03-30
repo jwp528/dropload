@@ -113,7 +113,6 @@
       });
     }//end if
 
-
     if ($.isFunction(settings.complete)) {
       settings.complete.call(this);
     }
